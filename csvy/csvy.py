@@ -1,4 +1,4 @@
-#!/usr/bin/env Python
+#!/usr/bin/env python
 """
 2016-11-18 22:42:29
 @author: Paul Reiter
