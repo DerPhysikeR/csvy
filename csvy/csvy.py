@@ -101,7 +101,8 @@ def yaml_writer(writer, comment_char='#'):
     def write_with_yaml_header(header, data_object, *args, **kwargs):
         content = StringIO()
         yaml.dump(header, content)
-        written_header = comment(content.getvalue().split('\n')[:-1], '#')
+        written_header = comment(content.getvalue().split('\n')[:-1],
+                                 comment_char)
         with open(args[0], 'w') as stream:
             stream.writelines(written_header + '\n')
             f = methodcaller(writer, stream, *args[1:], **kwargs)
