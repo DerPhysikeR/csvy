@@ -5,17 +5,17 @@
 """
 import pytest
 import pandas as pd
-import csvy
+import yamlead
 
 
 def test_write_read_csvy_pandas(tmpdir):
-    write_csvy = csvy.writer('to_csv')
-    read_csvy = csvy.reader(pd.read_csv)
+    writer = yamlead.writer('to_csv')
+    reader = yamlead.reader(pd.read_csv)
     header = {'test': 'data', 'for_yaml': ['item1', 'item2']}
     content = pd.DataFrame({'a': [1, 4, 7], 'b': [2, 5, 8], 'c': [3, 6, 9]})
 
-    write_csvy(header, content, tmpdir + 'temp.csv')
-    header, content = read_csvy(tmpdir + 'temp.csv')
+    writer(header, content, tmpdir + 'temp.csv')
+    header, content = reader(tmpdir + 'temp.csv')
 
     assert 'test' in header and 'for_yaml' in header
     assert header['test'] == 'data'
