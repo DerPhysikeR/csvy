@@ -4,10 +4,10 @@ Csvy contains decorator functions which enable common csv reader/writer function
 
 ```python
 import pandas as pd
-from csvy import yaml_reader, yaml_writer
+import csvy
 
-read_csvy = yaml_reader(pd.read_csv, comment_char='#')
-write_csvy = yaml_writer('to_csv', comment_char='#')
+read_csvy = csv.reader(pd.read_csv, comment_char='#')
+write_csvy = csv.writer('to_csv', comment_char='#')
 
 header = {'author: 'authorname', 'items': ['item1', 'item2']}
 content = pd.DataFrame({'a': [1, 4, 7], 'b': [2, 5, 8]})

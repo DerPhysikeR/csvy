@@ -5,12 +5,12 @@
 """
 import pytest
 import pandas as pd
-from .csvy import yaml_reader, yaml_writer
+import csvy
 
 
 def test_write_read_csvy_pandas(tmpdir):
-    write_csvy = yaml_writer('to_csv')
-    read_csvy = yaml_reader(pd.read_csv)
+    write_csvy = csvy.writer('to_csv')
+    read_csvy = csvy.reader(pd.read_csv)
     header = {'test': 'data', 'for_yaml': ['item1', 'item2']}
     content = pd.DataFrame({'a': [1, 4, 7], 'b': [2, 5, 8], 'c': [3, 6, 9]})
 

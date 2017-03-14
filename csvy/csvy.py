@@ -45,7 +45,7 @@ def comment(lines, comment_char):
     return '\n'.join([comment_char + line for line in lines])
 
 
-def yaml_reader(reader, comment_char='#'):
+def reader(reader, comment_char='#'):
     """Defines a reader function for csv files with yaml header.
 
     This is a decorator for file reader functions like `pd.read_csv`,
@@ -78,7 +78,7 @@ def yaml_reader(reader, comment_char='#'):
     return read_with_yaml_header
 
 
-def yaml_writer(writer, comment_char='#'):
+def writer(writer, comment_char='#'):
     """Defines a writer function for csv files with yaml header.
 
     This is a decorator for file writer functions like `pd.to_csv`,
