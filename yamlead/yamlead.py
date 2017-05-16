@@ -98,13 +98,13 @@ def writer(writer, comment_char='#'):
         Function with similar arguments as `writer` but with header and
         content to write as the first two arguments.
     """
-    def write_with_yaml_header(header, data_object, *args, **kwargs):
+    def write_with_yaml_header(metadata, data_object, *args, **kwargs):
         content = StringIO()
-        yaml.dump(header, content)
-        written_header = comment(content.getvalue().split('\n')[:-1],
-                                 comment_char)
+        yaml.dump(metadata, content)
+        written_metadata = comment(content.getvalue().split('\n')[:-1],
+                                   comment_char)
         with open(args[0], 'w') as stream:
-            stream.writelines(written_header + '\n')
+            stream.writelines(written_metadata + '\n')
             f = methodcaller(writer, stream, *args[1:], **kwargs)
             f(data_object)
     return write_with_yaml_header
